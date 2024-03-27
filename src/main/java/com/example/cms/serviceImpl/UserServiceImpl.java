@@ -50,6 +50,16 @@ public class UserServiceImpl implements UserService{
 		}).orElseThrow(()-> new UserNotFoundException("User not found  success fully"));
 	}
     
+    
+    @Override
+	public ResponseEntity<ResponseStructure<UserResponse>> findById(int userId) {
+		
+		return userRepository.findById(userId).map(user->{
+			return ResponseEntity.ok(structure.setStatus(HttpStatus.OK.value())
+					.setMessage("user found by Id").setData(mapToUserResponse(userRepository.save(user))));
+		}).orElseThrow(()->new UserNotFoundException("User not found successfully"));
+	}
+
 	
 	private UserResponse mapToUserResponse(User user) {
 		
