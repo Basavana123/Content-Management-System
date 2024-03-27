@@ -23,6 +23,21 @@ public class UserServiceImpl implements UserService{
 	
 	private PasswordEncoder passwordEncoder;
 
+	private UserRepository userRepository;
+
+	private ResponseStructure<UserResponse> structure;
+	
+    @Override
+	public ResponseEntity<ResponseStructure<UserResponse>> registerUser(UserRequest userRequest) {
+		if(userRepository.existsByEmail(userRequest.getEmail()))
+			throw new UserAllReadyExistByEmailException("Failed to register User");
+		
+		User user= mapToUserEntity(userRequest, new User());
+		userRepository.save(user);
+		return ResponseEntity.ok(structure.setStatus(HttpStatus.OK.value())
+				.setMessage("User Registered Successfully")
+				.setData(mapToUserResponse(user)));
+	}
 	
 	private UserResponse mapToUserResponse(User user) {
 		
