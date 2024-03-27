@@ -8,10 +8,10 @@ import com.example.cms.dto.UserResponse;
 
 public interface UserService {
 
-//	ResponseEntity<ResponseStructure<UserResponse>> registerUser(UserRequest userRequest);
+	ResponseEntity<ResponseStructure<UserResponse>> registerUser(UserRequest userRequest);
+
+    ResponseEntity<ResponseStructure<UserResponse>> deleteUser(int userId);
 //
-//    ResponseEntity<ResponseStructure<UserResponse>> deleteUser(int userId);
-////
 //	ResponseEntity<ResponseStructure<UserResponse>> findById(int userId);
 //	
 	
