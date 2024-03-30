@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService{
 				.setMessage("User Registered Successfully")
 				.setData(mapToUserResponse(user)));
 	}
+
     
     @Override
 	public ResponseEntity<ResponseStructure<UserResponse>> deleteUser(int userId) {
@@ -50,6 +51,7 @@ public class UserServiceImpl implements UserService{
 		}).orElseThrow(()-> new UserNotFoundException("User not found  success fully"));
 	}
     
+
     
     @Override
 	public ResponseEntity<ResponseStructure<UserResponse>> findById(int userId) {
@@ -59,6 +61,7 @@ public class UserServiceImpl implements UserService{
 					.setMessage("user found by Id").setData(mapToUserResponse(userRepository.save(user))));
 		}).orElseThrow(()->new UserNotFoundException("User not found successfully"));
 	}
+
 
 	
 	private UserResponse mapToUserResponse(User user) {
