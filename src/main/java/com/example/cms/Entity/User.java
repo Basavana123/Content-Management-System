@@ -1,7 +1,6 @@
  package com.example.cms.Entity;
 
 import java.time.LocalDate;
-
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -37,5 +36,6 @@ public class User {
 	private LocalDate lastmodifiedAt;
 	
 	private boolean deleted;
-
+	
+	
 }

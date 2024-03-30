@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.example.cms.Exception.TitleNotAvalibleEXception;
 import com.example.cms.Exception.UserAllReadyExistByEmailException;
 
 import lombok.AllArgsConstructor;
@@ -25,5 +26,9 @@ public class ApplicationExceptionHandler {
 	
 	public ResponseEntity<ErrorStructure<String>> handlerUserAllreadyExistByEmail(UserAllReadyExistByEmailException ex){
 		return errorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), "User Already exists with the given email Id");
+	}
+	
+	public ResponseEntity<ErrorStructure<String>> titleAllreadyExist(TitleNotAvalibleEXception ex){
+		return errorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), "Title all ready exist");
 	}
 }

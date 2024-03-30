@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService{
 		
 		User user= mapToUserEntity(userRequest, new User());
 		userRepository.save(user);
-		return ResponseEntity.ok(structure.setStatus(HttpStatus.OK.value())
+		return ResponseEntity.ok(structure.setStatus(HttpStatus.CREATED.value())
 				.setMessage("User Registered Successfully")
 				.setData(mapToUserResponse(user)));
 	}
@@ -46,7 +46,9 @@ public class UserServiceImpl implements UserService{
 			user.setDeleted(true);
 			userRepository.save(user);
 			return ResponseEntity.ok(structure.setStatus(HttpStatus.OK.value())
-					.setMessage("user deleted successfully").setData(mapToUserResponse(userRepository.save(user))));
+					.setMessage("user deleted successfully")
+					.setData(mapToUserResponse(userRepository
+							.save(user))));
 		}).orElseThrow(()-> new UserNotFoundException("User not found  success fully"));
 	}
     
@@ -55,8 +57,9 @@ public class UserServiceImpl implements UserService{
 	public ResponseEntity<ResponseStructure<UserResponse>> findById(int userId) {
 		
 		return userRepository.findById(userId).map(user->{
-			return ResponseEntity.ok(structure.setStatus(HttpStatus.OK.value())
-					.setMessage("user found by Id").setData(mapToUserResponse(userRepository.save(user))));
+			return ResponseEntity.ok(structure.setStatus(HttpStatus.FOUND.value())
+					.setMessage("user found by Id")
+					.setData(mapToUserResponse(userRepository.save(user))));
 		}).orElseThrow(()->new UserNotFoundException("User not found successfully"));
 	}
 
