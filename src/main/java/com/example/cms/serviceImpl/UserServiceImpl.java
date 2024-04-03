@@ -9,8 +9,8 @@ import com.example.cms.Entity.User;
 import com.example.cms.Exception.UserAllReadyExistByEmailException;
 import com.example.cms.Exception.UserNotFoundException;
 import com.example.cms.Utility.ResponseStructure;
-import com.example.cms.dto.UserRequest;
-import com.example.cms.dto.UserResponse;
+import com.example.cms.dtoReponse.UserResponse;
+import com.example.cms.dtoRequest.UserRequest;
 import com.example.cms.repository.UserRepository;
 import com.example.cms.service.UserService;
 

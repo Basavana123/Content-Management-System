@@ -7,13 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.cms.Entity.Blog;
+import com.example.cms.Entity.User;
 import com.example.cms.Exception.BlogNotFoundById;
 import com.example.cms.Exception.TitleNotAvalibleEXception;
 import com.example.cms.Exception.TopicNotSpecifiedException;
 import com.example.cms.Exception.UserNotFoundByIdException;
 import com.example.cms.Utility.ResponseStructure;
-import com.example.cms.dto.BlogRequest;
-import com.example.cms.dto.BlogResponse;
+import com.example.cms.dtoReponse.BlogResponse;
+import com.example.cms.dtoRequest.BlogRequest;
 import com.example.cms.repository.BlogRepository;
 import com.example.cms.repository.UserRepository;
 import com.example.cms.service.BlogService;
@@ -43,7 +44,7 @@ public class BlogServiceImpl implements BlogService{
 				throw new TopicNotSpecifiedException("failed to create blog");
 			
 			Blog blog = mapToBlogEntity(blogRequest, new Blog());
-			 blog.setUsers(Arrays.asList(user));
+			 blog.setUser((User) Arrays.asList(user));
 			 blogRepository.save(blog);		
 			 
 			 return ResponseEntity.ok(responseStructure.setStatus(HttpStatus.OK.value())
@@ -69,7 +70,7 @@ public class BlogServiceImpl implements BlogService{
 				throw new TopicNotSpecifiedException("failed to update blog");
 			
 			Blog blog1=mapToBlogEntity(blogRequest, blog);
-			blog1.setUsers(blog.getUsers());
+			blog1.setUser(blog.getUser());
 			
 			blogRepository.save(blog1);
 			
@@ -101,14 +102,5 @@ public class BlogServiceImpl implements BlogService{
 		
 		return blog;
 	}
-
-	
-
-	
-
-
-
-	
-	
 
 }

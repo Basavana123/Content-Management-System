@@ -7,7 +7,11 @@ import com.example.cms.Entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+	Optional<User> findByEmail(String username);
+
 	boolean existsByEmail(String email);
 	
-	Optional<User> findByEmail(String email);
+
+	
+	
 }

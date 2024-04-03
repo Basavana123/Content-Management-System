@@ -3,8 +3,8 @@ package com.example.cms.service;
 import org.springframework.http.ResponseEntity;
 
 import com.example.cms.Utility.ResponseStructure;
-import com.example.cms.dto.BlogRequest;
-import com.example.cms.dto.BlogResponse;
+import com.example.cms.dtoReponse.BlogResponse;
+import com.example.cms.dtoRequest.BlogRequest;
 
 public interface BlogService {
 

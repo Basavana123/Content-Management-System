@@ -10,7 +10,7 @@ import com.example.cms.Entity.User;
 import lombok.AllArgsConstructor;
 
 @SuppressWarnings("serial")
-@AllArgsConstructor
+//@AllArgsConstructor
 public class CustomUserDetails implements UserDetails {
 	
 	
@@ -18,12 +18,10 @@ public class CustomUserDetails implements UserDetails {
 	
 	
 
-//	public CustomUserDetails(User user) {
-//		super();
-//		this.user = user;
-//	}
-
-
+	public CustomUserDetails(User user) {
+		super();
+		this.user = user;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

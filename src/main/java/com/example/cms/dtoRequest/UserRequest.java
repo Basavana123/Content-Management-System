@@ -1,4 +1,4 @@
-package com.example.cms.dto;
+package com.example.cms.dtoRequest;
 
 import lombok.Getter;
 import lombok.Setter;

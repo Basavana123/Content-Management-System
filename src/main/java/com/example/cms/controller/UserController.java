@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.cms.Utility.ResponseStructure;
-import com.example.cms.dto.UserRequest;
-import com.example.cms.dto.UserResponse;
+import com.example.cms.dtoReponse.UserResponse;
+import com.example.cms.dtoRequest.UserRequest;
 import com.example.cms.service.UserService;
 
 import lombok.AllArgsConstructor;
