@@ -30,7 +30,7 @@ public class ContributionPanelServiceImpl implements ContributionPanelService{
 	private PanelResponse mapToContributionPanelResponse(ContributionPanel panel) {
 
 //		return PanelResponse.builder().panelId(panel.getPanelId()).build();
-		return new PanelResponse(panel.getPanelId());
+		return new PanelResponse(panel.getPanelId(), panel.getContributors());
 
 	}
 	
@@ -43,8 +43,8 @@ public class ContributionPanelServiceImpl implements ContributionPanelService{
 				if(!blogRepository.existsByUserAndContributionPanel(owner,panel))
 					throw new IllegalAccessRequestException("Failed to add Contribution");
 				 return userRepository.findById(userId).map(contribution->{
-			        if(!panel.getUsers().contains(contribution)&& panel.getUsers().contains(owner))
-						panel.getUsers().add(contribution);
+			        if(!panel.getContributors().contains(contribution)&& panel.getContributors().contains(owner))
+						panel.getContributors().add(contribution);
 
 					contributionPanelRepository.save(panel);
 					return ResponseEntity.ok(responseStructure.setStatus(HttpStatus.OK.value())
@@ -65,7 +65,7 @@ public class ContributionPanelServiceImpl implements ContributionPanelService{
 					throw new IllegalAccessRequestException("Failed to add Contribution");
 				return userRepository.findById(userId).map(contribution->{
 					//if(!panel.getUsers().contains(contribution)&& panel.getUsers().contains(owner))
-						panel.getUsers().remove(contribution);
+						panel.getContributors().remove(contribution);
 
 					contributionPanelRepository.save(panel);
 					return ResponseEntity.ok(responseStructure.setStatus(HttpStatus.OK.value())

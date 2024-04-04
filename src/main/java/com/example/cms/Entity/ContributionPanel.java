@@ -1,5 +1,6 @@
 package com.example.cms.Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -20,8 +21,8 @@ public class ContributionPanel {
 	private int panelId;
 	
 	@ManyToMany
-	private List<User> users;
-	
+	private List<User> contributors = new ArrayList<User>();
+
 	
 	
 	
